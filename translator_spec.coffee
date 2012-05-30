@@ -6,6 +6,7 @@ examples =
   4: 'cuatro'
   87: 'ochenta y siete'
   100: 'cien'
+  260: 'doscientos sesenta'
   428: 'cuatrocientos veintiocho'
   1000: 'mil'
   2345: 'dos mil trescientos cuarenta y cinco'

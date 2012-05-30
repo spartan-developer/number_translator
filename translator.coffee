@@ -13,7 +13,7 @@ HUNDREDS = ['_', 'ciento', 'doscientos', 'trescientos', 'cuatrocientos', 'quinie
 # translate 1000 | "mil"
 # translate 461  | "cuarenta sesenta y uno"
 translate = (x, prefix = '') ->
-  return '' if x == 0
+  return '' if x == 0 # x is a *remainder* of zero here, because 0 is caught below
   if -9999 <= x < 0 then 'menos ' + translate(Math.abs x)
   else if x <= 9    then prefix + FIRST_29[x] # prefix = 'y ' if x > 30 and there's a remainder <= 9
   else if x <= 29   then FIRST_29[x]
@@ -25,4 +25,4 @@ translate = (x, prefix = '') ->
   else throw new Error('Sorry, I can only count to plus/minus 9999 :(')
 
 exports.translate = (x) ->
-  if x == 0 then 'cero' else translate(x).trim()
+  if x == 0 then 'cero' else translate(x).trim() # remainders of 0 can produce trailing whitespace
