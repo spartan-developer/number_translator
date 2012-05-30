@@ -9,6 +9,7 @@ examples =
   428: 'cuatrocientos veintiocho'
   1000: 'mil'
   2345: 'dos mil trescientos cuarenta y cinco'
+  9000: 'nueve mil'
 
 describe "the translator", ->
 

@@ -13,8 +13,8 @@ HUNDREDS = ['_', 'ciento', 'doscientos', 'trescientos', 'cuatrocientos', 'quinie
 # translate 1000 | "mil"
 # translate 461  | "cuarenta sesenta y uno"
 translate = (x, prefix = '') ->
+  return '' if x == 0
   if -9999 <= x < 0 then 'menos ' + translate(Math.abs x)
-  else if x == 0    then 'cero'
   else if x <= 9    then prefix + FIRST_29[x] # prefix = 'y ' if x > 30 and there's a remainder <= 9
   else if x <= 29   then FIRST_29[x]
   else if x <= 99   then TENS[parseInt x/10] + ' ' + translate(x%10, 'y ')
@@ -24,4 +24,5 @@ translate = (x, prefix = '') ->
   else if x <= 9999 then FIRST_29[parseInt x/1000] + " mil " + translate(x%1000, 'y ')
   else throw new Error('Sorry, I can only count to plus/minus 9999 :(')
 
-exports.translate = translate
+exports.translate = (x) ->
+  if x == 0 then 'cero' else translate(x).trim()
