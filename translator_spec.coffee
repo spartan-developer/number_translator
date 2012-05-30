@@ -1,4 +1,4 @@
-translate = require('./alternate').translate
+translate = require('./translator').translate
 
 examples =
   '-100': 'menos cien'
